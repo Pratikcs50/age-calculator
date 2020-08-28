@@ -1,0 +1,28 @@
+#include<iostream>
+#include<ctime>
+#include<cmath>
+
+using namespace std;
+
+void getAge(int,int,int);
+int main(){
+    int mm,dd,yr;
+    cout<<"                                     WELCOME TO AGE CALCULATOR\n";
+    cout<<"                                     _________________________"<<endl;
+    cout<<"ENTER YOUR DOB IN DD/MM/YR\n";
+    cin>>dd>>mm>>yr;
+    getAge(dd,mm,yr);
+    
+    return 0;
+}
+
+void getAge(int dd,int mm,int yr){
+
+    yr=yr-1900;
+    mm=mm-1;
+
+    time_t t=time(NULL);
+    struct tm* timeStruct = localtime(&t);
+    cout<<abs(dd-(timeStruct->tm_mday))<<"-"<<abs(mm-(timeStruct->tm_mon))<<yr-(timeStruct->tm_year)<<endl;
+   
+}
